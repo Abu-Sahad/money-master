@@ -10,9 +10,9 @@ margin-bottom: 20px;
 }
 .body-img{
     
-    width: 620px;
+    width:100%;
     height:600px;
-    object-fit: cover;
+    
 }
 .common-text{
     font-weight:bold;

@@ -1,58 +1,48 @@
-function incomeCal() {
-    const incomeInput = document.getElementById('income-field');
-    const income = parseFloat(incomeInput.value);
-    const food = document.getElementById('food-field').value;
-    const rent = document.getElementById('rent-field').value;
-    const colthes = document.getElementById('colthes-field').value;
 
-
-    if (food < 0 || rent < 0 || colthes < 0) {
-        alert('plz valid input');
-        return //incomeExpenseCal;
-    }
-    //all expense addition
-    const totalExpence = parseFloat(food) + parseFloat(rent) + parseFloat(colthes)
-    //condition of total expense and income
-
-    if (totalExpence < income) {
-        const Expense = document.getElementById('total-expense');
-        Expense.innerText = totalExpence;
-        const netIncome = document.getElementById('total');
-        netIncome.innerText = income - totalExpence;
-    }
-    else {
-        alert('plz valid input')
-    }
+function inputFields(inputFieldId) {
+    const inputValue = document.getElementById(inputFieldId);
+    const getInputValue = inputValue.value;
+    const getInputValueParse = parseFloat(getInputValue);
+    return getInputValueParse;
 }
 
 document.getElementById('cal-button').addEventListener('click', function () {
+    const income = inputFields('income-field');
+    const food = inputFields('food-field');
+    const rent = inputFields('rent-field');
+    const colthes = inputFields('colthes-field');
 
-
-    incomeCal()
-
-
+    if (food < 0 || rent < 0 || colthes < 0) {
+        alert('Please Enter valid input');
+    }
+    else {
+        //all expense addition
+        const totalExpence = food + rent + colthes;
+        //condition of total expense and income
+        if (totalExpence < income) {
+            const Expense = document.getElementById('total-expense');
+            Expense.innerText = totalExpence;
+            const netIncome = document.getElementById('total');
+            netIncome.innerText = income - totalExpence;
+        }
+        else {
+            alert('Please Enter valid input');
+        }
+    }
 });
 
 document.getElementById('save-button').addEventListener('click', function () {
-    const incomeInput = document.getElementById('income-field');
-    const currentIncome = parseFloat(incomeInput.value);
-    //incomeCal(currentIncome)
-    const saveAmountFieldTex = document.getElementById('save-field');
-    const saveAmountField = parseFloat(saveAmountFieldTex.value);
-
+    const currentIncome = inputFields('income-field');
+    const saveAmountField = inputFields('save-field');
     const saveAmount = document.getElementById('sv-amount');
-
     //Saving Amount Calculation
     const SaveAmountCalcution = ((currentIncome * saveAmountField) / 100);
-
-
     const remainingBalance = document.getElementById('rm-balance');
-
     const remainigTotalIncome = document.getElementById('total');
     let totalRemaining = parseFloat(remainigTotalIncome.innerText);
 
     if (saveAmountField < 0) {
-        alert('plz valid input');
+        alert('Please Enter valid input');
     }
     else {
         // condition of total remaining and total Save
@@ -62,11 +52,7 @@ document.getElementById('save-button').addEventListener('click', function () {
             remainingBalance.innerText = TotalRemainingBalance;
         }
         else {
-            alert('plz valid input');
-
-
+            alert('Please Enter valid input');
         }
     }
-
-
-})
+});
