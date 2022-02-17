@@ -1,63 +1,72 @@
-function incomeExpenseCal() {
+function incomeCal() {
     const incomeInput = document.getElementById('income-field');
     const income = parseFloat(incomeInput.value);
     const food = document.getElementById('food-field').value;
     const rent = document.getElementById('rent-field').value;
     const colthes = document.getElementById('colthes-field').value;
 
-    const totalExpence = parseFloat(food) + parseFloat(rent) + parseFloat(colthes);
-    //const total = income - totalExpence;
 
-    if (totalExpence > income) {
-        alert('plz valid input and expense is big')
+    if (food < 0 || rent < 0 || colthes < 0) {
+        alert('plz valid input');
+        return //incomeExpenseCal;
     }
-    else {
+    //all expense addition
+    const totalExpence = parseFloat(food) + parseFloat(rent) + parseFloat(colthes)
+    //condition of total expense and income
+
+    if (totalExpence < income) {
         const Expense = document.getElementById('total-expense');
         Expense.innerText = totalExpence;
         const netIncome = document.getElementById('total');
         netIncome.innerText = income - totalExpence;
     }
-
+    else {
+        alert('plz valid input')
+    }
 }
 
 document.getElementById('cal-button').addEventListener('click', function () {
 
 
-    incomeExpenseCal()
+    incomeCal()
 
 
 });
 
 document.getElementById('save-button').addEventListener('click', function () {
     const incomeInput = document.getElementById('income-field');
-    const income1 = parseFloat(incomeInput.value);
+    const currentIncome = parseFloat(incomeInput.value);
+    //incomeCal(currentIncome)
     const saveAmountFieldTex = document.getElementById('save-field');
     const saveAmountField = parseFloat(saveAmountFieldTex.value);
 
     const saveAmount = document.getElementById('sv-amount');
 
-    const TotalSaveAmount = ((income1 * saveAmountField) / 100);
-    saveAmount.innerText = TotalSaveAmount;
+    //Saving Amount Calculation
+    const SaveAmountCalcution = ((currentIncome * saveAmountField) / 100);
+
 
     const remainingBalance = document.getElementById('rm-balance');
 
     const remainigTotalIncome = document.getElementById('total');
-    let totalIncomeRemaining = parseFloat(remainigTotalIncome.innerText);
+    let totalRemaining = parseFloat(remainigTotalIncome.innerText);
 
-
-    if (totalIncomeRemaining > TotalSaveAmount) {
-        const TotalRemainingBalance = totalIncomeRemaining - TotalSaveAmount;
-        remainingBalance.innerText = TotalRemainingBalance;
+    if (saveAmountField < 0) {
+        alert('plz valid input');
     }
     else {
-        alert('plz valid input');
+        // condition of total remaining and total Save
+        if (totalRemaining > SaveAmountCalcution) {
+            saveAmount.innerText = SaveAmountCalcution;
+            const TotalRemainingBalance = totalRemaining - SaveAmountCalcution;
+            remainingBalance.innerText = TotalRemainingBalance;
+        }
+        else {
+            alert('plz valid input');
 
 
+        }
     }
-
-
-
-
 
 
 })
