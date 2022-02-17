@@ -10,14 +10,14 @@ document.getElementById('cal-button').addEventListener('click', function () {
     const income = inputFields('income-field');
     const food = inputFields('food-field');
     const rent = inputFields('rent-field');
-    const colthes = inputFields('colthes-field');
+    const clothes = inputFields('clothes-field');
 
-    if (food < 0 || rent < 0 || colthes < 0) {
+    if (food < 0 || rent < 0 || clothes < 0) {
         alert('Please Enter valid input');
     }
     else {
         //all expense addition
-        const totalExpence = food + rent + colthes;
+        const totalExpence = food + rent + clothes;
         //condition of total expense and income
         if (totalExpence < income) {
             const Expense = document.getElementById('total-expense');
@@ -52,7 +52,7 @@ document.getElementById('save-button').addEventListener('click', function () {
             remainingBalance.innerText = TotalRemainingBalance;
         }
         else {
-            alert('Please Enter valid input');
+            alert('Insufficient balance to you account');
         }
     }
 });
