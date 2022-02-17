@@ -46,7 +46,7 @@ document.getElementById('save-button').addEventListener('click', function () {
     }
     else {
         // condition of total remaining and total Save
-        if (totalRemaining > SaveAmountCalcution) {
+        if (totalRemaining >= SaveAmountCalcution) {
             saveAmount.innerText = SaveAmountCalcution;
             const TotalRemainingBalance = totalRemaining - SaveAmountCalcution;
             remainingBalance.innerText = TotalRemainingBalance;
